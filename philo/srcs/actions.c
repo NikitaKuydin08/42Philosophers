@@ -6,7 +6,7 @@
 /*   By: Nikita_Kuydin <nikitakuydin@qmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 17:40:37 by Nikita_Kuyd       #+#    #+#             */
-/*   Updated: 2026/02/25 21:13:30 by Nikita_Kuyd      ###   ########.fr       */
+/*   Updated: 2026/02/26 00:27:41 by Nikita_Kuyd      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,24 @@ void	put_forks_down(t_philo *philo)
 
 void	philo_eats(t_philo *philo)
 {
-	philo->eating = 1;
-	print_message(philo, "is eating");
 	pthread_mutex_lock(&philo->meal_lock);
 	philo->last_meal = get_time();
 	philo->nb_meals_eaten++;
 	pthread_mutex_unlock(&philo->meal_lock);
+	print_message(philo, "is eating");
 	my_usleep(philo->data->time_to_eat);
-	philo->eating = 0;
 }
 
 void	philo_thinks(t_philo *philo)
 {
-	int	think_time;
+	long long	time_to_think;
 
 	print_message(philo, "is thinking");
-	if (philo->id % 2 == 0)
-		think_time = philo->data->time_to_eat
+	if (philo->data->nb_philo % 2 != 0)
+	{
+		time_to_think = (philo->data->time_to_eat * 2) \
 			- philo->data->time_to_sleep;
-	else
-		think_time = (philo->data->time_to_eat * 2)
-			- philo->data->time_to_sleep;
-	if (think_time > 0)
-		my_usleep(think_time);
+		if (time_to_think > 0)
+			my_usleep(time_to_think * 0.5);
+	}
 }

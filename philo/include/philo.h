@@ -6,7 +6,7 @@
 /*   By: Nikita_Kuydin <nikitakuydin@qmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 21:30:18 by Nikita_Kuyd       #+#    #+#             */
-/*   Updated: 2026/02/25 21:15:05 by Nikita_Kuyd      ###   ########.fr       */
+/*   Updated: 2026/02/25 23:24:20 by Nikita_Kuyd      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ int			init_philosophers(t_data *data, t_philo *philo);
 void		*routine(void *philo_ptr);
 void		*routine_even(void *philo_ptr);
 void		*philo_routine(void *philo_ptr);
+int			waiter(t_philo *philo);
 
 #endif

@@ -26,33 +26,6 @@ Simulation ends when one of the philosopher dies, or all philosophers ated neces
 
 #include "../include/philo.h"
 
-// int	create_threads(t_philo *philo, t_data *data)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < data->nb_philo)
-// 	{
-// 		if (data->nb_philo % 2 == 0)
-// 		{
-// 			if (pthread_create(&philo[i].thread, NULL, &routine_even, \
-// 					&philo[i]) != 0)
-// 				return (create_error());
-// 		}
-// 		else
-// 		{
-// 			if (pthread_create(&philo[i].thread, NULL, &routine, \
-// 					&philo[i]) != 0)
-// 				return (create_error());
-// 		}
-// 		i++;
-// 	}
-// 	i = -1;
-// 	while (++i < data->nb_philo)
-// 		pthread_join(philo[i].thread, NULL);
-// 	return (0);
-// }
-
 int	create_threads(t_philo *philo, t_data *data)
 {
 	int	i;
