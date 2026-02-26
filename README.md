@@ -16,6 +16,16 @@ The problem is to design a protocol that allows each philosopher to pick up the 
 
 ---
 
+The project demonstrates strong understanding of:
+
+ - Threading concepts
+ - Mutex synchronization
+ - Race condition prevention
+ - Deadlock avoidance
+ - Time-critical programming
+ 
+---
+
 ## Instructions
 
 ### Requirements

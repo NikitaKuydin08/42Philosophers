@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nikita_Kuydin <nikitakuydin@qmail.com>     +#+  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 23:59:19 by Nikita_Kuyd       #+#    #+#             */
-/*   Updated: 2026/02/25 21:49:47 by Nikita_Kuyd      ###   ########.fr       */
+/*   Updated: 2026/02/26 20:16:23 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	check_if_all_ate(t_philo *philo)
+static int	check_if_all_ate(t_philo *philo)
 {
 	int	counter;
 	int	i;
@@ -39,7 +39,7 @@ int	check_if_all_ate(t_philo *philo)
 	return (0);
 }
 
-int	philo_is_dead(t_philo *philo)
+static int	philo_is_dead(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->meal_lock);
 	if (get_time() - philo->last_meal >= philo->data->time_to_die)
@@ -51,7 +51,7 @@ int	philo_is_dead(t_philo *philo)
 	return (0);
 }
 
-int	check_if_sm_dead(t_philo *philo)
+static int	check_if_sm_dead(t_philo *philo)
 {
 	int	i;
 

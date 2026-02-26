@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nikita_Kuydin <nikitakuydin@qmail.com>     +#+  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 19:45:08 by Nikita_Kuyd       #+#    #+#             */
-/*   Updated: 2026/02/25 23:17:45 by Nikita_Kuyd      ###   ########.fr       */
+/*   Updated: 2026/02/26 19:19:21 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-long long   get_time(void)
+long long	get_time(void)
 {
-	struct timeval  tv;
-	long long       res;
+	struct timeval	tv;
+	long long		res;
 
 	gettimeofday(&tv, NULL);
 	res = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);

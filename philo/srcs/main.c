@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nikita_Kuydin <nikitakuydin@qmail.com>     +#+  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 12:16:15 by Nikita_Kuyd       #+#    #+#             */
-/*   Updated: 2026/02/25 19:16:13 by Nikita_Kuyd      ###   ########.fr       */
+/*   Updated: 2026/02/26 19:20:35 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ pthread_mutex_unlock
 
 no libft allowed
 
-Simulation ends when one of the philosopher dies, or all philosophers ated necessary number of times
+Simulation ends when one of the philosopher dies, or all philosophers
+ated necessary number of times
 */
 
 #include "../include/philo.h"
@@ -33,8 +34,8 @@ int	create_threads(t_philo *philo, t_data *data)
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		if (pthread_create(&philo[i].thread, NULL, &philo_routine, \
-				&philo[i]) != 0)
+		if (pthread_create(&philo[i].thread, NULL, &philo_routine,
+				& philo[i]) != 0)
 			return (create_error());
 		i++;
 	}
@@ -50,13 +51,13 @@ int	create_threads(t_philo *philo, t_data *data)
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
-	t_philo	philo[200];
+	t_data			data;
+	t_philo			philo[200];
 	pthread_t		observer;
-	
+
 	if (init_data(&data, argc, argv) || init_forks(&data)
 		|| init_philosophers(&data, philo))
-			return (destroy_mutex(&data, philo));
+		return (destroy_mutex(&data, philo));
 	if (data.nb_philo == 1)
 	{
 		print_message(&philo[0], "has taken a fork");

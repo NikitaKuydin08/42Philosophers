@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nikita_Kuydin <nikitakuydin@qmail.com>     +#+  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 17:40:37 by Nikita_Kuyd       #+#    #+#             */
-/*   Updated: 2026/02/26 00:27:41 by Nikita_Kuyd      ###   ########.fr       */
+/*   Updated: 2026/02/26 19:21:33 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	philo_thinks(t_philo *philo)
 	print_message(philo, "is thinking");
 	if (philo->data->nb_philo % 2 != 0)
 	{
-		time_to_think = (philo->data->time_to_eat * 2) \
+		time_to_think = (philo->data->time_to_eat * 2)
 			- philo->data->time_to_sleep;
 		if (time_to_think > 0)
 			my_usleep(time_to_think * 0.5);

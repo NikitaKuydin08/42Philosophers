@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Nikita_Kuydin <nikitakuydin@qmail.com>     +#+  +:+       +#+         #
+#    By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/13 19:21:15 by Nikita_Kuyd       #+#    #+#              #
-#    Updated: 2026/02/25 15:11:43 by Nikita_Kuyd      ###   ########.fr        #
+#    Updated: 2026/02/26 19:58:09 by nkuydin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS = srcs/main.c \
 		srcs/actions.c \
 		srcs/exit_free.c \
 		srcs/init.c \
-		srcs/libft_utils.c \
+		srcs/ft_atoi.c \
 		srcs/monitor.c \
 		srcs/routine.c \
 		srcs/utils.c
@@ -53,8 +53,7 @@ fclean: clean
 
 re: fclean all
 
-leaks: valgrind --tool=helgrind --tool=drd ./{NAME} 4 410 200 200 5
-
 .PHONY: all clean fclean re leaks
 
 #-g #-fsanitize=thread #-fsanitize=address
+# valgrind --tool=helgrind --tool=drd ./philo 4 410 200 200 4

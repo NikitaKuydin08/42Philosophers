@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nikita_Kuydin <nikitakuydin@qmail.com>     +#+  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 14:35:33 by Nikita_Kuyd       #+#    #+#             */
-/*   Updated: 2026/02/25 20:25:57 by Nikita_Kuyd      ###   ########.fr       */
+/*   Updated: 2026/02/26 21:26:48 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	init_data(t_data *data, int argc, char **argv)
 		data->nb_to_eat = ft_atoi(argv[5]);
 	else
 		data->nb_to_eat = -1;
-	if (data->nb_philo <= 0 || data->time_to_die < 60 || data->time_to_eat < 60 || \
-		data->time_to_sleep < 60 || (argc == 6 && data->nb_to_eat < 0))
+	if (data->nb_philo <= 0 || data->time_to_die < 0 || data->time_to_eat < 0
+		|| data->time_to_sleep < 0 || (argc == 6 && data->nb_to_eat < 0))
 		return (handle_msg_error(NEG));
 	data->start_simulation = get_time();
 	data->finished = 0;
@@ -54,30 +54,11 @@ int	init_forks(t_data *data)
 	return (0);
 }
 
-// void	init_nearby_philo(t_philo *philo, int i, int nb)
-// {
-// 	if (i == 0)
-// 	{
-// 		philo[i].left_fork = &philo[nb - 1];
-// 		philo[i].right_fork = &philo[i + 1];
-// 	}
-// 	else if (i == nb - 1)
-// 	{
-// 		philo[i].left_fork = &philo[i - 1];
-// 		philo[i].right_fork = &philo[0];
-// 	}
-// 	else
-// 	{
-// 		philo[i].left_fork = &philo[i - 1];
-// 		philo[i].right_fork = &philo[i + 1];
-// 	}
-// }
-
 int	init_philosophers(t_data *data, t_philo *philo)
 {
 	int	i;
 
-	i = 0; // TO DO initialisation of the philosophers.
+	i = 0;
 	while (i < data->nb_philo)
 	{
 		philo[i].id = i + 1;
@@ -88,7 +69,6 @@ int	init_philosophers(t_data *data, t_philo *philo)
 		philo[i].left_fork = &data->forks[i];
 		philo[i].right_fork = &data->forks[(i + 1) % data->nb_philo];
 		pthread_mutex_init(&philo[i].meal_lock, NULL);
-		// init_nearby_philo(philo, i, data->nb_philo);
 		philo[i].data = data;
 		philo[i].eating = 0;
 		philo[i].left_fork_state = 0;

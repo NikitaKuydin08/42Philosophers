@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nikita_Kuydin <nikitakuydin@qmail.com>     +#+  +:+       +#+        */
+/*   By: nkuydin <nkuydin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 21:30:18 by Nikita_Kuyd       #+#    #+#             */
-/*   Updated: 2026/02/25 23:24:20 by Nikita_Kuyd      ###   ########.fr       */
+/*   Updated: 2026/02/26 20:47:46 by nkuydin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@
 # endif
 
 # ifndef NEG
-#  define NEG "Error: one or more arguments has a value lower than 0"
+#  define NEG "Error: Invalid Input"
 # endif
 
 typedef struct s_data
 {
-	int	nb_philo;
-	int	time_to_die;
-	int	time_to_sleep;
-	int	time_to_eat;
-	int	nb_to_eat;
-	
-	long long start_simulation;
-	
-	pthread_mutex_t *forks;
+	int				nb_philo;
+	int				time_to_die;
+	int				time_to_sleep;
+	int				time_to_eat;
+	int				nb_to_eat;
+
+	long long		start_simulation;
+
+	pthread_mutex_t	*forks;
 	pthread_mutex_t	waiter;
 	pthread_mutex_t	print;
 	pthread_mutex_t	finish_simulation;
@@ -73,11 +73,11 @@ void		put_forks_down(t_philo *philo);
 void		philo_eats(t_philo *philo);
 void		philo_thinks(t_philo *philo);
 
-//####### LIBFT_UTILS #######//
+//####### FT_ATOI #######//
 int			ft_atoi(const char *str);
 
 //####### UTILS #######//
-long long   get_time(void);
+long long	get_time(void);
 void		print_message(t_philo *philo, char *message);
 void		my_usleep(long long request_time);
 int			check_if_finished(t_data *data);
@@ -97,9 +97,6 @@ int			init_forks(t_data *data);
 int			init_philosophers(t_data *data, t_philo *philo);
 
 //####### ROUTINE #######//
-void		*routine(void *philo_ptr);
-void		*routine_even(void *philo_ptr);
 void		*philo_routine(void *philo_ptr);
-int			waiter(t_philo *philo);
 
 #endif
